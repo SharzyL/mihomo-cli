@@ -1,0 +1,49 @@
+[project]
+name = "mihomoctl"
+version = "0.1.0"
+description = "TUI controller for mihomo"
+authors = [
+    {name = "SharzyL", email = "me@sharzy.in"},
+]
+dependencies = [
+    "httpx>=0.28",
+    "msgspec>=0.19",
+    "textual>=3.0",
+]
+requires-python = ">=3.12"
+license = "MIT"
+
+[project.scripts]
+mihomoctl = "mihomoctl:main"
+
+[dependency-groups]
+dev = [
+    "basedpyright>=1.29",
+    "pytest>=8",
+    "pytest-asyncio>=0.25",
+    "ruff>=0.11",
+]
+
+[build-system]
+requires = ["uv_build"]
+build-backend = "uv_build"
+
+[tool.uv]
+package = true
+
+[tool.ruff]
+line-length = 120
+format.quote-style = "single"
+
+[tool.basedpyright]
+include = ["src", "tests"]
+typeCheckingMode = "recommended"
+# textual's widget APIs and message handlers lean heavily on dynamic typing
+reportAny = false
+reportExplicitAny = false
+reportUnusedCallResult = false
+reportImplicitOverride = false
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"

@@ -1,0 +1,9 @@
+.direnv
+.idea
+result*
+.venv
+.pdm-python
+__pycache__
+dist
+*.egg-info
+.ruff_cache
